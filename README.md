@@ -4,3 +4,4 @@
    Hibernate
    JDK
    Maven 4
+   MySQL
