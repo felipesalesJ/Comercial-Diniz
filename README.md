@@ -1,5 +1,5 @@
 # Comercial-Diniz
-   Sistema para gerenciamento de estoque da comercial Diniz
+   Sistema para gerenciamento de estoque da Comercial Diniz
 # Requisitos
    Tomcat 9
    Hibernate
