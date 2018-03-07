@@ -9,4 +9,4 @@
 # Colaboradores
    -Felipe Sales de Jesus
    -Julio César Pinheiro de Lima
-   -Matheus Mendez Diniz
+   -Matheus Mendes Diniz
