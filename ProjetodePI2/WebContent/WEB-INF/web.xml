@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ProjetoLtp4</display-name>
+  
+  <servlet>
+  	<servlet-name>gerenteServlet</servlet-name>
+  	<servlet-class>br.com.lojaconstrucao.servlet.gerenteServlet</servlet-class>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>gerenteServlet</servlet-name>
+  	<url-pattern>/gerente</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>produtoServlet</servlet-name>
+  	<servlet-class>br.com.lojaconstrucao.servlet.produtosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>produtoServlet</servlet-name>
+  	<url-pattern>/produto</url-pattern>
+  </servlet-mapping>
+
+	<servlet>
+		<servlet-name>clienteServlet</servlet-name>
+		<servlet-class>br.com.lojaconstrucao.servlet.clienteServlet</servlet-class>
+	</servlet>  
+	<servlet-mapping>
+		<servlet-name>clienteServlet</servlet-name>
+		<url-pattern>/cliente</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>funcionarioServlet</servlet-name>
+		<servlet-class>br.com.lojaconstrucao.servlet.funcionarioServlet</servlet-class>
+	</servlet>  
+	<servlet-mapping>
+		<servlet-name>funcionarioServlet</servlet-name>
+		<url-pattern>/funcionario</url-pattern>
+	</servlet-mapping>
+		
+	
+</web-app>
