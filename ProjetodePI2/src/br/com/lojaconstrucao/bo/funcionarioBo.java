@@ -23,4 +23,8 @@ public class funcionarioBo {
 	public void removerFuncionario(int id){
 		dao.removerFuncionario(id);
 	}
+	
+	public String obterFuncionarioId(int id){
+		 return dao.obterFuncionarioId(id);
+	}
 }

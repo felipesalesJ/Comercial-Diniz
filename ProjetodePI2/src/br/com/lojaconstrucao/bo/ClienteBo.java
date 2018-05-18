@@ -19,4 +19,12 @@ public class ClienteBo {
 	public void removerCliente(int id){
 		dao.removerCliente(id);
 	}
+	
+	public void adicionarCliente(Cliente cliente){
+		dao.adicionarCliente(cliente);
+	}
+	
+	public String obterClienteId(int id){
+		return dao.obterCLienteId(id);
+	}
 }

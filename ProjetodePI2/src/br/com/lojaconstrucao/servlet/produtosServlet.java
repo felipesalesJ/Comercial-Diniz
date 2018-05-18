@@ -28,34 +28,46 @@ public class produtosServlet extends HttpServlet{
 		String acao = req.getParameter("acao");
         
 		if(acao.equals("cadastrarProduto")){       	
+			if(req.getParameter("nome") == "" || req.getParameter("Quantidade") == "" || req.getParameter("Preço") == "" ){
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/produtoInvalido.jsp");
+			}else{
 				produto.setNome(req.getParameter("nome"));
 	            produto.setQuant(Integer.parseInt(req.getParameter("Quantidade")));
 	            produto.setPreço(Double.parseDouble(req.getParameter("Preço")));
-	           
-	            ProdutoBo produtoBo = new ProdutoBo();
-	            produtoBo.cadastrarProduto(produto);
 	            
-	            //req.getSession().setAttribute("produtos", );
+	            bo.cadastrarProduto(produto);
 	            resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/produtoAdicionado.jsp");
-	            
+			}       
 		}
 		
 		if(acao.equals("alterarProduto")){
-			produto.setId(Integer.parseInt(req.getParameter("id")));
-			produto.setNome(req.getParameter("nome"));
-			produto.setQuant(Integer.parseInt(req.getParameter("quantidade")));
-			produto.setPreço(Double.parseDouble(req.getParameter("valor")));
+			if(req.getParameter("id") == "" || req.getParameter("nome") == "" || req.getParameter("quantidade") == "" || req.getParameter("valor") == ""){
+				req.getSession().setAttribute("produtos", bo.obterTodosProdutos());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/alterarProdutoErro.jsp");
+			}else{
+				produto.setId(Integer.parseInt(req.getParameter("id")));
+				produto.setNome(req.getParameter("nome"));
+				produto.setQuant(Integer.parseInt(req.getParameter("quantidade")));
+				produto.setPreço(Double.parseDouble(req.getParameter("valor")));
+				
+				bo.alterarProduto(produto);
+				req.getSession().setAttribute("produtos", bo.obterTodosProdutos());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/alterarProdutoSucesso.jsp");
 			
-			bo.alterarProduto(produto);
-			
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/alterarProdutos.jsp");
+			}
 		}
 		
 		if(acao.equals("removerProduto")){
-			
-			bo.removerProduto(Integer.parseInt(req.getParameter("id")));
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/excluirProdutos.jsp");
-			
+			System.out.println("AKI 1");
+			if(req.getParameter("id") == null){
+				System.out.println("AKI 2");
+				req.getSession().setAttribute("produtos", bo.obterTodosProdutos());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/excluirProdutosErro.jsp");
+			}else{
+				bo.removerProduto(Integer.parseInt(req.getParameter("id")));
+				req.getSession().setAttribute("produtos", bo.obterTodosProdutos());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/excluirProdutosSucesso.jsp");
+			}
 		}
 		
 		if(acao.equals("listarAlteraProdutos")){

@@ -85,31 +85,20 @@ public class funcionarioDao {
 			}
 	}
 	
-	
-	
-	/*
-	public List<Produto> obterTodosProdutos(){
-		String query = "select * from Produtos";
+	public String obterFuncionarioId(int id){
+		System.out.println("ID QUE CHEga:"+id);
+		String query = "select * from funcionarios where id = "+id;
 		Connection con = new Conexao().obterConexao();
-		List<Produto> produtos = new ArrayList<>();
+		String f = null;
 		try{
 			PreparedStatement ps = con.prepareStatement(query);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()){
-				Produto produto = new Produto();
-				produto.setId(rs.getInt("id"));
-				produto.setNome(rs.getString("nome"));
-				produto.setQuant(rs.getInt("quant"));
-				produto.setPreço(rs.getDouble("preco"));
-				produtos.add(produto);
-			}
-			ps.close();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            	f = rs.getString("nome");
+            }
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return produtos;
+		return f;
 	}
-	
-	
-	*/
 }

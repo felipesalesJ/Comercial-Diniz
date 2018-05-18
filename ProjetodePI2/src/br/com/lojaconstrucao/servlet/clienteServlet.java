@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.lojaconstrucao.bo.ClienteBo;
+import br.com.lojaconstrucao.bo.ProdutoBo;
+import br.com.lojaconstrucao.bo.funcionarioBo;
 import br.com.lojaconstrucao.modelo.Cliente;
 
 
@@ -21,29 +23,55 @@ public class clienteServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
-    //teste
+    
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Cliente cliente = new Cliente();
 		ClienteBo bo = new ClienteBo();
 		String acao = req.getParameter("acao");
 		
+		if(acao.equals("cadastrarCliente")){       	
+			if(req.getParameter("nome") == "" || req.getParameter("email") == "" || req.getParameter("telefone") == ""){
+		            resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/adicionarClienteErro.jsp");
+			}else{
+				cliente.setNome(req.getParameter("nome"));
+				cliente.setEmail(req.getParameter("email"));
+				cliente.setTelefone(req.getParameter("telefone"));
+				bo.adicionarCliente(cliente); 
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/adicionarClienteSucesso.jsp");
+				
+			}
+		}
+		
 		if(acao.equals("removerCliente")){
-			
-			bo.removerCliente(Integer.parseInt(req.getParameter("id")));
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/removerCliente.jsp");	
-		}	
+			if(req.getParameter("id") == null || req.getParameter("id") == ""){
+				req.getSession().setAttribute("clientes", bo.listarClientes());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/removerClienteErro.jsp");
+			}else{
+				bo.removerCliente(Integer.parseInt(req.getParameter("id")));
+				req.getSession().setAttribute("clientes", bo.listarClientes());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/removerClienteSucesso.jsp");	
+				}	
+				
+		}
 		
 		if(acao.equals("alterarCliente")){
-			cliente.setId(Integer.parseInt(req.getParameter("id")));
-			cliente.setNome(req.getParameter("nome"));
-			cliente.setTelefone(req.getParameter("telefone"));
-			cliente.setEmail(req.getParameter("email"));
+			if(req.getParameter("id") == "" || req.getParameter("nome") == "" || req.getParameter("telefone") == "" || req.getParameter("email") == ""){
+				req.getSession().setAttribute("clientes", bo.listarClientes());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/modificarClienteErro.jsp");
+			}else{
+				
+				cliente.setId(Integer.parseInt(req.getParameter("id")));
+				cliente.setNome(req.getParameter("nome"));
+				cliente.setTelefone(req.getParameter("telefone"));
+				cliente.setEmail(req.getParameter("email"));
+				
+				bo.alterarCliente(cliente);
+				req.getSession().setAttribute("clientes", bo.listarClientes());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/modificarClienteSucesso.jsp");
+			}
+			}
 			
-			bo.alterarCliente(cliente);
-			req.getSession().setAttribute("clientes", bo.listarClientes());
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/modificarCliente.jsp");
-		}
         
 		if(acao.equals("listarConsultarCliente")){
 			req.getSession().setAttribute("clientes", bo.listarClientes());
@@ -60,18 +88,11 @@ public class clienteServlet extends HttpServlet{
 			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Clientes/removerCliente.jsp");
 		}
 		
+	
 		
 		
-		/*if(acao.equals("cadastrarProduto")){       	
-				produto.setNome(req.getParameter("nome"));
-	            produto.setQuant(Integer.parseInt(req.getParameter("Quantidade")));
-	            produto.setPreço(Double.parseDouble(req.getParameter("Preço")));
-	           
-	            ProdutoBo produtoBo = new ProdutoBo();
-	            produtoBo.cadastrarProduto(produto);
-	            
-	            resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/produtoAdicionado.jsp");
-	  	}
+		
+		/*
 		
 		
 		

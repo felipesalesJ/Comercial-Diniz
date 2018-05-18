@@ -12,9 +12,26 @@ import br.com.lojaconstrucao.modelo.Produto;
 
 
 import br.com.lojaconstrucao.modelo.Cliente;
+import br.com.lojaconstrucao.modelo.Funcionario;
 
 public class ClienteDao {
 	Cliente cliente = new Cliente();
+	
+	public void adicionarCliente(Cliente cliente){
+		String query = "INSERT INTO clientes(nome,telefone,email) VALUES (?, ?, ?)";
+		Connection con = new Conexao().obterConexao();
+		PreparedStatement ps = null;
+		try{
+			ps = con.prepareStatement(query);
+			ps.setString(1,cliente.getNome());
+			ps.setString(2, cliente.getTelefone());
+			ps.setString(3, cliente.getEmail());
+			ps.execute();
+			ps.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 	
 	public List<Cliente> obterTodosClientes(){
 		String query = "select * from clientes";
@@ -24,6 +41,7 @@ public class ClienteDao {
 			PreparedStatement ps = con.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
+				Cliente cliente = new Cliente();
 				cliente.setId(rs.getInt("id"));
 				cliente.setNome(rs.getString("nome"));
 				cliente.setTelefone(rs.getString("telefone"));
@@ -66,5 +84,21 @@ public class ClienteDao {
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
+	}
+	
+	public String obterCLienteId(int id){
+		String query = "select * from clientes where id = "+id;
+		Connection con = new Conexao().obterConexao();
+		String c = null;
+		try{
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				c = rs.getString("nome");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return c;
 	}
 }

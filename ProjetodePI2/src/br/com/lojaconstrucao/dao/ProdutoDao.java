@@ -6,18 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import br.com.lojaconstrucao.modelo.Produto;
 
 public class ProdutoDao {
 	Produto produto = new Produto();
 	
 	public void cadastrarProduto(Produto produto){
-		System.out.println("Chegou aqui");
 		String query = "INSERT INTO produtos(nome,quant,preco) VALUES (?, ?, ?)";
 		Connection con = new Conexao().obterConexao();
-		System.out.println(produto.getNome());
-		System.out.println(produto.getQuant());
-		System.out.println(produto.getPreço());
 		PreparedStatement ps = null;
 		try{
 			ps = con.prepareStatement(query);
@@ -82,5 +79,22 @@ public class ProdutoDao {
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
+	}
+
+	public Produto obterPorId(int id) {
+		String query = "select * from produtos where id = "+id;
+		Connection con = new Conexao().obterConexao();
+		try{
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				produto.setNome(rs.getString("nome"));
+				produto.setId(rs.getInt("id"));
+				produto.setPreço(rs.getDouble("preco"));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return produto;
 	}
 }

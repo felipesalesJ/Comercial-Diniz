@@ -37,15 +37,23 @@ public class gerenteServlet extends HttpServlet{
         		}		
 		
         if(acao.equals("alterarNome")){
-			gerenteBo.alterarNome(req.getParameter("nome"));
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Gerente/nomeAlterado.jsp");	
+			if(req.getParameter("nome") == ""){
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Gerente/nomeInvalido.jsp");
+			}else{
+				gerenteBo.alterarNome(req.getParameter("nome"));
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Gerente/nomeAlterado.jsp");	
+			}	
 		}
         
         if(acao.equals("alterarSenha")){
+        	if(req.getParameter("senha") == "" || req.getParameter("senha").length() > 6){
+        		resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Gerente/senhaInvalida.jsp");
+        	}else{
         	gerenteBo.alterarSenha(req.getParameter("senha")) ;
         		resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Gerente/senhaAlterada.jsp");
-        	}
+        		}
         }
-	}
+    }
+}
 
  

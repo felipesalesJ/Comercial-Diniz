@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.lojaconstrucao.bo.ClienteBo;
 import br.com.lojaconstrucao.bo.ProdutoBo;
 import br.com.lojaconstrucao.bo.funcionarioBo;
 import br.com.lojaconstrucao.modelo.Funcionario;
@@ -30,32 +31,48 @@ public class funcionarioServlet extends HttpServlet{
 		String acao = req.getParameter("acao");
 
 		if(acao.equals("cadastrarFuncionario")){       	
+			if(req.getParameter("nome") == "" || req.getParameter("telefone") == "" || req.getParameter("email") == ""){
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/adicionarFuncionarioErro.jsp");
+			}else{
 				func.setNome(req.getParameter("nome"));
-	            func.setTelefone(req.getParameter("telefone"));
+				func.setTelefone(req.getParameter("telefone"));
 				func.setEmail(req.getParameter("email"));
-	            func.setSalario(Double.parseDouble(req.getParameter("salario")));
-	            
-	            bo.adicionarFuncionario(func);
-	            
-	            resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/adicionarFuncionario.jsp");
+				func.setSalario(Double.parseDouble(req.getParameter("salario")));
+				
+				bo.adicionarFuncionario(func);
+				
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/adicionarFuncionarioSucesso.jsp");
+				
+			}
 		}
 		
 		if(acao.equals("alterarFuncionario")){
-			func.setId(Integer.parseInt(req.getParameter("id")));
-			func.setNome(req.getParameter("nome"));
-			func.setTelefone(req.getParameter("telefone"));
-			func.setEmail(req.getParameter("email"));
-			func.setSalario(Double.parseDouble(req.getParameter("salario")));
-			
-			bo.modificarFuncionario(func);
-			req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/modificarFuncionario.jsp");
+			if(req.getParameter("nome") == "" || req.getParameter("telefone") == "" || req.getParameter("salario") == "" || req.getParameter("email") ==""){
+				req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/modificarFuncionarioErro.jsp");
+			}else{
+				func.setId(Integer.parseInt(req.getParameter("id")));
+				func.setNome(req.getParameter("nome"));
+				func.setTelefone(req.getParameter("telefone"));
+				func.setEmail(req.getParameter("email"));
+				func.setSalario(Double.parseDouble(req.getParameter("salario")));
+				
+				bo.modificarFuncionario(func);
+				req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/modificarFuncionarioSucesso.jsp");
+				
+			}
 		}
 		
 		if(acao.equals("removerFuncionario")){
-			
-			bo.removerFuncionario(Integer.parseInt(req.getParameter("id")));
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Produtos/excluirProdutos.jsp");
+			if(req.getParameter("id") == "" || req.getParameter("id") == null){
+				req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/excluirFuncionariosErro.jsp");
+			}else{
+				bo.removerFuncionario(Integer.parseInt(req.getParameter("id")));
+				req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
+				resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/excluirFuncionariosSucesso.jsp");				
+			}
 			
 		}	
 		
@@ -71,7 +88,13 @@ public class funcionarioServlet extends HttpServlet{
 		
 		if(acao.equals("listarRemoverFuncionario")){
 			req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
-			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/excluirFuncionario.jsp");
+			resp.sendRedirect("/ProjetodePI2/gerenciarSistema/Funcionario/excluirFuncionarios.jsp");
 		}
+		
+		if(acao.equals("listarEscolherfunc")){
+			req.getSession().setAttribute("func", bo.obterTodosFuncionarios());
+			resp.sendRedirect("/ProjetodePI2/Menu/menuVenda.jsp");
+		}
+		
 	}
 } 
