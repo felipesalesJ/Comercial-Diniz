@@ -6,44 +6,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Alterar Produto</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h3>Alterar Produto</h3>
-			<h4>Qual Produto Alterar?</h4>
-			<table>
-		<thead>
+			<h1>Alterar Produto</h1>
+			<h3>Qual Produto Alterar?</h3>
+			<form action="/ProjetodePI2/produto" method="post">
+			<input type="hidden" name="acao" value="removerProduto">
+			
+			<table class = "table table-hover">
+		<thead class= "thead-dark">
 			<tr>
-				<th>ID</th>
 				<th>NOME</th>
 				<th>QUANTIDADE</th>
 				<th>PREÇO</th>
-				
+				<th>SELECIONAR</th>
 			</tr>
 		</thead>
 		<% for(Produto produto: (List<Produto>) session.getAttribute("produtos")){ %>
 		<tbody>
 			<tr>
-				<td><%=produto.getId()%></td>
 				<td><%=produto.getNome()%></td>
 				<td><%=produto.getQuant()%></td>
 				<td><%=produto.getPreço()%></td>
+				<td><input type="radio" name = "id" value=<%=produto.getId()%> /></td>
 			</tr>
 		</tbody>
 		<%}%>
 	</table>
-			
-			<hr>
-				<form action="/ProjetodePI2/produto" method="post">
-						<input type="hidden" name="acao" value="removerProduto">
-						<input type="text" name="id" placeholder="Digite o id que deseja excluir"><br/>
-						<button type="submit" name="Submit">Excluir</button>
+				<button class="btn btn-primary" type="submit" name="Submit">Excluir</button>
 				</form>
 				<br/>
 				<form action="/ProjetodePI2/gerenciarSistema/Produtos/gerenciarProdutos.jsp" method="post">			
-						<button type="submit" name="Submit">Voltar</button>
+				<button class="btn btn-primary" type="submit" name="Submit">Voltar</button>
 				
 		</div>
 	</div>

@@ -5,45 +5,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gerenciamento do sistema</title>
+<link rel="stylesheet" href="../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-				<h1>Gerenciarmento do Sistema</h1>
+				<h1>Gerenciamento do Sistema</h1>
+				<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Gerente/gerenciarGerente.jsp" method="post">
-						<button type="submit">Modificar nome/senha do gerente</button>
+						<button class="btn btn-primary" type="submit">Modificar nome/senha do gerente</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Produtos/gerenciarProdutos.jsp" method="post">
-						<button type="submit">Gerenciar Produtos</button>
+						<button class="btn btn-primary" type="submit">Gerenciar Produtos</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Clientes/gerenciarCliente.jsp" method="post">
-						<button type="submit">Gerenciar Clientes</button>
+						<button class="btn btn-primary" type="submit">Gerenciar Clientes</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Funcionario/gerenciarFuncionario.jsp" method="post">
-						<button type="submit">Gerenciar Funcionários</button>
+						<button class="btn btn-primary" type="submit">Gerenciar Funcionários</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerente" method="post">
 						<input type="hidden" name="acao" value="validarsenha">
-						<button type="submit">Realizar venda</button>
+						<button class="btn btn-primary" type="submit">Realizar venda</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerente" method="post">
 						<input type="hidden" name="acao" value="validarsenha">
-						<button type="submit">Emitir Relatorio de Compras</button>
+						<button class="btn btn-primary" type="submit">Emitir Relatorio de Compras</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerente" method="post">
 						<input type="hidden" name="acao" value="validarsenha">
-						<button type="submit">Emitir Relatorio de Vendas</button>
+						<button class="btn btn-primary" type="submit">Emitir Relatorio de Vendas</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/menu.jsp" method="post">
-						<button type="submit">Voltar</button>
+						<button class="btn btn-primary" type="submit">Voltar</button>
 				</form>
 				
 				<br />

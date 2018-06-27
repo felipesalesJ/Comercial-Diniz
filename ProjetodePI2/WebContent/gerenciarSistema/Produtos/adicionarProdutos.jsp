@@ -5,24 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gerenciar Produtos</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
 				<h1>Gerenciamento dos Produtos</h1>
-				<h2>Adicionar Produtos</h2>
+				<h3>Adicionar Produtos</h3>
 				<form action="/ProjetodePI2/produto" method="post">
 						<input type="hidden" name="acao" value="cadastrarProduto">
-						
-						<input type="text" name="nome" placeholder="nome do produto"><br/>
-						<input type="text" name="Quantidade"placeholder="quantidade de produto"><br/>
-						<input type="text" name="Preço" placeholder="valor do produto"><br/>
-						
-						<button type="submit" name="Submit">Cadastrar Produto</button>
+						<input class="form-control" type="text" name="nome" placeholder="nome do produto">
+						<input class="form-control" type="text" name="Quantidade"placeholder="quantidade de produto">
+						<input class="form-control"  type="text" name="Preço" placeholder="valor do produto">
+						<button class="btn btn-primary" type="submit" name="Submit">Cadastrar Produto</button><hr>
 				</form>
 				<form action="/ProjetodePI2/gerenciarSistema/Produtos/gerenciarProdutos.jsp" method="post">
-					<button type="submit">Voltar</button>		
+					<button class="btn btn-primary" type="submit">Voltar</button>		
 				</form>
 				
 				</div>

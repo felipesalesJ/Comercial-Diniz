@@ -5,23 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gerenciar Produtos</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
 				<h1>Gerenciamento dos Funcionarios</h1>
-				<h2>Adicionar Funcionário</h2>
+				<h3>Adicionar Funcionário</h3>
 				<form action="/ProjetodePI2/funcionario" method="post">
 						<input type="hidden" name="acao" value="cadastrarFuncionario">
-						<input type="text" name="nome" placeholder="nome do funcionário"><br/>
-						<input type="text" name="telefone"placeholder="telefone do funcionário"><br/>
-						<input type="text" name="email" placeholder="email do funcionário"><br/>
-						<input type="text" name="salario" placeholder="salário do funcionário"><br/>
-						<button type="submit" name="Submit">Cadastrar Funcionário</button>
+						<input class="form-control" type="text" name="nome" placeholder="nome do funcionário">
+						<input class="form-control" type="text" name="telefone"placeholder="telefone do funcionário">
+						<input class="form-control" type="text" name="email" placeholder="email do funcionário">
+						<input class="form-control" type="text" name="salario" placeholder="salário do funcionário">
+						<button class="btn btn-primary" type="submit" name="Submit">Cadastrar Funcionário</button>
 				</form>
+				<br/>
 				<form action="/ProjetodePI2/gerenciarSistema/Funcionario/gerenciarFuncionario.jsp" method="post">
-					<button type="submit">Voltar</button>		
+					<button class="btn btn-primary" type="submit">Voltar</button>		
 				</form>
 				
 				</div>

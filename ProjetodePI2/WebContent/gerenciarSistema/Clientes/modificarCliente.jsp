@@ -6,46 +6,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Consultar Produto</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h3>Clientes do Sistema</h3>
-			<table>
-		<thead>
+			<h1>Clientes</h1>
+				<form action="/ProjetodePI2/cliente" method="post">
+						<input type="hidden" name="acao" value="alterarCliente">
+			<table class="table table-hover">
+		<thead class = "thead-dark">
 			<tr>
-				<th>ID</th>
 				<th>NOME</th>
 				<th>TELEFONE</th>
 				<th>EMAIL</th>
+				<th>SELECIONE</th>
 				
 			</tr>
 		</thead>
 		<% for(Cliente clientes: (List<Cliente>) session.getAttribute("clientes")){ %>
 		<tbody>
 			<tr>
-				<td><%=clientes.getId()%></td>
 				<td><%=clientes.getNome()%></td>
 				<td><%=clientes.getTelefone()%></td>
 				<td><%=clientes.getEmail()%></td>
+				<td><input type="radio" name = "id" value=<%=clientes.getId()%> /></td>
 			</tr>
 		</tbody>
 		<%}%>
 	</table>
 			
 			<hr>
-				<form action="/ProjetodePI2/cliente" method="post">
-						<input type="hidden" name="acao" value="alterarCliente">
-						<input type="text" name="id" placeholder="Digite o id aqui"><br/>
-						<input type="text" name="nome" placeholder="Digite o novo nome"><br/>
-						<input type="text" name="telefone"placeholder="Digite o novo telefone"><br/>
-						<input type="text" name="email"	placeholder="Digite o novo email"><br/>
-						<button type="submit" name="Submit">Alterar</button>
+						<input class="form-control" type="text" name="nome" placeholder="Digite o novo nome">
+						<input class="form-control" type="text" name="telefone"placeholder="Digite o novo telefone">
+						<input class="form-control" type="text" name="email"	placeholder="Digite o novo email">
+						<button class="btn btn-primary" type="submit" name="Submit">Alterar</button>
 				</form>
-				
+				<br/>
 				<form action="/ProjetodePI2/gerenciarSistema/Clientes/gerenciarCliente.jsp" method="post">			
-						<button type="submit" name="Submit">Voltar</button>
+						<button class="btn btn-primary" type="submit" name="Submit">Voltar</button>
 				
 		</div>
 	</div>

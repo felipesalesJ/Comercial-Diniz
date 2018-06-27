@@ -6,16 +6,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Consultar Produto</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
 			<h3>Produtos do Sistema</h3>
-			<table>
-		<thead>
+			<table class = "table table-hover">
+		<thead class = "thead-dark">
 			<tr>
-				<th>ID</th>
 				<th>NOME</th>
 				<th>QUANTIDADE</th>
 				<th>PREÇO</th>
@@ -25,7 +25,6 @@
 		<% for(Produto produto: (List<Produto>) session.getAttribute("produtos")){ %>
 		<tbody>
 			<tr>
-				<td><%=produto.getId()%></td>
 				<td><%=produto.getNome()%></td>
 				<td><%=produto.getQuant()%></td>
 				<td><%=produto.getPreço()%></td>
@@ -33,10 +32,8 @@
 		</tbody>
 		<%}%>
 	</table>
-			
-			<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Produtos/gerenciarProdutos.jsp" method="post">			
-						<button type="submit" name="Submit">Voltar</button>
+						<button class="btn btn-primary" type="submit" name="Submit">Voltar</button>
 				
 		</div>
 	</div>

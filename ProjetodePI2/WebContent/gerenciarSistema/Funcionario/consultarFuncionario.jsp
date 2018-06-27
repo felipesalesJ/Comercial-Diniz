@@ -6,16 +6,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Consultar Funcionários</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h3>Funcionarios do Sistema</h3>
-			<table>
-		<thead>
+			<h1>Funcionarios do Sistema</h1>
+			<table = class = "table table-hover">
+		<thead class="thead-dark">
 			<tr>
-				<th>ID</th>
 				<th>NOME</th>
 				<th>TELEFONE</th>
 				<th>EMAIL</th>
@@ -25,7 +25,6 @@
 		<% for(Funcionario funcionario: (List<Funcionario>) session.getAttribute("func")){ %>
 		<tbody>
 			<tr>
-				<td><%=funcionario.getId()%></td>
 				<td><%=funcionario.getNome()%></td>
 				<td><%=funcionario.getTelefone()%></td>
 				<td><%=funcionario.getEmail()%></td>
@@ -35,9 +34,8 @@
 		<%}%>
 	</table>
 			
-			<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Funcionario/gerenciarFuncionario.jsp" method="post">			
-						<button type="submit" name="Submit">Voltar</button>
+						<button class="btn btn-primary" type="submit" name="Submit">Voltar</button>
 				
 		</div>
 	</div>

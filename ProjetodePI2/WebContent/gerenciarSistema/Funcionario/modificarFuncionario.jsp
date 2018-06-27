@@ -6,48 +6,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Consultar Funcionários</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h3>Alterar Cadastro dos Funcionários</h3>
-			<table>
-		<thead>
+			<h1>Alterar Cadastro dos Funcionários</h1>
+				<form action="/ProjetodePI2/funcionario" method="post">
+						<input type="hidden" name="acao" value="alterarFuncionario">
+			<table class= "table table=hover">
+		<thead class = "thead-dark">
 			<tr>
-				<th>ID</th>
 				<th>NOME</th>
 				<th>TELEFONE</th>
 				<th>EMAIL</th>
 				<th>SALARIO</th>
+				<th>SELECIONAR</th>
 			</tr>
 		</thead>
 		<% for(Funcionario funcionario: (List<Funcionario>) session.getAttribute("func")){ %>
 		<tbody>
 			<tr>
-				<td><%=funcionario.getId()%></td>
 				<td><%=funcionario.getNome()%></td>
 				<td><%=funcionario.getTelefone()%></td>
 				<td><%=funcionario.getEmail()%></td>
 				<td><%=funcionario.getSalario()%></td>
+				<td><input type="radio" name = "id" value=<%=funcionario.getId()%> /></td>
+			</tr>
 			</tr>
 		</tbody>
 		<%}%>
-	</table>
-			
-			<hr>
-			
-				<form action="/ProjetodePI2/funcionario" method="post">
-						<input type="hidden" name="acao" value="alterarFuncionario">
-						<input type="text" name="id" placeholder="Digite o id aqui"><br/>
-						<input type="text" name="nome" placeholder="Digite o nome aqui"><br/>
-						<input type="text" name="telefone"placeholder="Digite o telefone aqui"><br/>
-						<input type="text" name="email"	placeholder="Digite o email aqui"><br/>
-						<input type="text" name="salario"	placeholder="Digite o salário aqui"><br/>
-						<button type="submit" name="Submit">Alterar</button>
+	</table>		
+						<input class="form-control" type="text" name="nome" placeholder="Digite o nome aqui">
+						<input class="form-control" type="text" name="telefone"placeholder="Digite o telefone aqui">
+						<input class="form-control" type="text" name="email"	placeholder="Digite o email aqui">
+						<input class="form-control" type="text" name="salario"	placeholder="Digite o salário aqui">
+						<button class="btn btn-primary" type="submit" name="Submit">Alterar</button>
 				</form>
+				<br/>
 				<form action="/ProjetodePI2/gerenciarSistema/Funcionario/gerenciarFuncionario.jsp" method="post">			
-						<button type="submit" name="Submit">Voltar</button>
+						<button class="btn btn-primary" type="submit" name="Submit">Voltar</button>
 				
 		</div>
 	</div>

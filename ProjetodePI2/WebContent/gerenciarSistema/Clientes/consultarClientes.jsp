@@ -6,16 +6,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Consultar Produto</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h3>Clientes do Sistema</h3>
-			<table>
-		<thead>
+			<h1>Clientes</h1>
+			<table = class="table table-hover">
+		<thead class = "thead-dark">
 			<tr>
-				<th>ID</th>
 				<th>NOME</th>
 				<th>TELEFONE</th>
 				<th>EMAIL</th>
@@ -25,7 +25,6 @@
 		<% for(Cliente clientes: (List<Cliente>) session.getAttribute("clientes")){ %>
 		<tbody>
 			<tr>
-				<td><%=clientes.getId()%></td>
 				<td><%=clientes.getNome()%></td>
 				<td><%=clientes.getTelefone()%></td>
 				<td><%=clientes.getEmail()%></td>
@@ -36,7 +35,7 @@
 			
 			<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/Clientes/gerenciarCliente.jsp" method="post">			
-						<button type="submit" name="Submit">Voltar</button>
+						<button class= "btn btn-primary" type="submit" name="Submit">Voltar</button>
 				
 		</div>
 	</div>

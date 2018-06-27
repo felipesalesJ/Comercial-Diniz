@@ -5,34 +5,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Gerenciar Produtos</title>
+<link rel="stylesheet" href="../../resource/css/bootstrap.min.css"/>
+<title>Comercial Diniz</title>
 </head>
 <body>
 	<div class="container">
 		<div class="jumbotron">
-				<h1>Gerenciamento dos Produtos</h1>
+				<h1>Gerenciar Produtos</h1>
+				<hr>
 				<form action="adicionarProdutos.jsp" method="post">
 						<input type="hidden" name="acao" value="validarsenha">
-						<button type="submit">Adicionar Produtos</button>
+						<button class="btn btn-primary" type="submit">Adicionar Produtos</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/produto" method="post">
 						<input type="hidden" name="acao" value="listarAlteraProdutos">
-						<button type="submit">Alterar Produtos</button>
+						<button class="btn btn-primary" type="submit">Alterar Produtos</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/produto" method="post">
 						<input type="hidden" name="acao" value="listarExcluirProdutos">
-						<button type="submit">Excluir produtos</button>
+						<button class="btn btn-primary" type="submit">Excluir produtos</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/produto" method="post">
 						<input type="hidden" name="acao" value="listarConsultarProdutos">
-						<button type="submit">Vizualizar Produtos</button>
+						<button class="btn btn-primary" type="submit">Vizualizar Produtos</button>
 				</form>
 				<hr>
 				<form action="/ProjetodePI2/gerenciarSistema/gerenciamentosistema.jsp" method="post">
-					<button type="submit">Voltar</button>
+					<button class="btn btn-primary" type="submit">Voltar</button>
 				</form>
 				
 				</div>
